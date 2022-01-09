@@ -58,7 +58,14 @@ class SimpleCalcView extends StatelessWidget {
                       offstage: state.breakdown.isNotEmpty,
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: Center(child: Text('See simple_calc_cubit.dart TODO')),
+                        child: Center(child: Text('Welcome')),
+                      ),
+                    ),
+                    Offstage(
+                      offstage: state.errorMsg.isEmpty,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Center(child: Text(state.errorMsg)),
                       ),
                     ),
                     Offstage(
@@ -69,7 +76,7 @@ class SimpleCalcView extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Total change R${state.totalChange}', style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text('Total change R${state.totalChange.toStringAsFixed(2)}', style: TextStyle(fontWeight: FontWeight.bold)),
                               ListView(
                                 shrinkWrap: true,
                                 children: state.breakdown.entries.map((entry) => Text('R${entry.key} x ${entry.value}')).toList(),
